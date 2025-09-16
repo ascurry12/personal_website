@@ -1,7 +1,7 @@
 import React from "react";
 import Window from "./Window";
 
-const Links = ({ isOpen, setIsOpen, isMuted, position, id, zIndex }) => {
+const Links = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, isMobile }) => {
   const content = ["linkedin", "github", "artwork"];
 
   const icons = {
@@ -16,7 +16,7 @@ const Links = ({ isOpen, setIsOpen, isMuted, position, id, zIndex }) => {
     artwork: "javascript:;",
   };
 
-  return (
+  return (isMobile ? <></> :
     <Window
       title="links"
       position={position}

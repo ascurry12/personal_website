@@ -11,28 +11,42 @@ import Music from "./Components/Music";
 import Popup from "./Components/Popup";
 import Drawer from "./Components/Drawer";
 import clickSound from "/assets/audio/click.mp3";
-import popupSound from "/assets/audio/popup.mp3";
+import Lightbox from "./Components/Lightbox";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [time, setTime] = useState(new Date());
-  const [popupPlayed, setPopupPlayed] = useState(false);
+
+  const [openImage, setOpenImage] = useState(null);
+  const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
 
   const [isOpen, setIsOpen] = useState({
     about: false,
     creations: false,
     links: false,
     playlists: false,
-    popup: true,
+    popup: false,
   });
 
   const [positions, setPositions] = useState({
-    about: { x: Math.floor(window.innerWidth / 2) - 400, y: Math.floor(window.innerHeight / 6)},
-    creations: { x: 800, y: 100 },
-    links: { x: Math.floor(window.innerWidth / 2) - 50, y: Math.floor(window.innerHeight / 2) },
-    playlists: { x: Math.floor(window.innerWidth / 2) - 250, y: Math.floor(window.innerHeight / 4) },
+    about: {
+      x: Math.floor(window.innerWidth / 2) - 400,
+      y: Math.floor(window.innerHeight / 6),
+    },
+    creations: {
+      x: Math.floor(window.innerWidth / 2) - 350,
+      y: Math.floor(window.innerHeight / 8),
+    },
+    links: {
+      x: Math.floor(window.innerWidth / 2) - 50,
+      y: Math.floor(window.innerHeight / 2),
+    },
+    playlists: {
+      x: Math.floor(window.innerWidth / 2) - 250,
+      y: Math.floor(window.innerHeight / 4),
+    },
     popup: {
       x: Math.floor(window.innerWidth / 3) - 100,
       y: Math.floor(window.innerHeight / 3),
@@ -48,11 +62,6 @@ function App() {
   });
 
   const [playClick] = useSound(clickSound, {
-    volume: 0.25,
-    soundEnabled: !isMuted,
-  });
-
-  const [playPopup] = useSound(popupSound, {
     volume: 0.25,
     soundEnabled: !isMuted,
   });
@@ -174,13 +183,15 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(popupPlayed);
-    if (isOpen["popup"] && !popupPlayed) {
-      playPopup();
-    }
-    setPopupPlayed(true);
-    console.log(popupPlayed);
-  }, [popupPlayed]);
+    const timer = setTimeout(() => {
+      setIsOpen((prev) => ({
+        ...prev,
+        popup: true,
+      }));
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -256,9 +267,6 @@ function App() {
           />
         </div>
         {/* Drawers and windows */}
-        {isMobile ? (
-          <div></div>
-        ) : (
           <DndContext
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
@@ -271,6 +279,7 @@ function App() {
               isOpen={isOpen["about"]}
               setIsOpen={setIsOpen}
               isMuted={isMuted}
+              isMobile={isMobile}
             />
             <Creations
               id="creations"
@@ -279,6 +288,11 @@ function App() {
               isOpen={isOpen["creations"]}
               setIsOpen={setIsOpen}
               isMuted={isMuted}
+              setOpenImage={setOpenImage}
+              openImage={openImage}
+              setLightboxIsOpen={setLightboxIsOpen}
+              lightboxIsOpen={lightboxIsOpen}
+              isMobile={isMobile}
             />
             <Links
               id="links"
@@ -287,6 +301,7 @@ function App() {
               isOpen={isOpen["links"]}
               setIsOpen={setIsOpen}
               isMuted={isMuted}
+              isMobile={isMobile}
             />
             <Music
               id="playlists"
@@ -295,6 +310,7 @@ function App() {
               isOpen={isOpen["playlists"]}
               setIsOpen={setIsOpen}
               isMuted={isMuted}
+              isMobile={isMobile}
             />
             <Popup
               id="popup"
@@ -303,9 +319,9 @@ function App() {
               isOpen={isOpen["popup"]}
               setIsOpen={setIsOpen}
               isMuted={isMuted}
+              isMobile={isMobile}
             />
           </DndContext>
-        )}
       </div>
       {isMobile ? null : <Footer />}
     </div>
