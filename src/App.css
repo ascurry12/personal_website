@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+  @keyframes pop-in {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-pop-in {
+    animation: pop-in 0.1s ease-out;
+  }
+}
+
+@theme {
+  --color-fuschia: #ea1b96;
+  --color-fuschiagradient: #cf1885;
+  --color-darkcobalt: #323234;
+  --color-darkcobaltgradient: #49494b;
+  --color-pitchblack: #222127;
+  --color-steel: #3d3d3d;
+  --color-transparentblack: #000000;
+  --color-lightgray: #C8C8C8;
+
+  --color-window-blue: #b7c3eb;
+  --color-window-hotpink: #ea1b96;
+  --color-window-lightpink: #ffd4e5;
+  --color-window-darkpurple: #a37aef;
+  --color-window-lightpurple: #dfb7eb;
+
+  --font-display: "Jersey 20", sans-serif;
+  --font-body-1: "Inconsolata", monospace;
+  --font-body-2: "IBM Plex Sans", sans-serif;
+
+  --bg-lightimage: url("/assets/heartlight.png");
+  --bg-darkimage: url("/assets/heartdark.png");
+}
+
+.dark {
+  --color-window-blue: #3847ee;
+  --color-window-hotpink: #7d0068;
+  --color-window-lightpink: #c94398;
+  --color-window-darkpurple: #802b93;
+  --color-window-lightpurple: #7a5cd6;
+}
+
+.star-hr {
+  border: none;
+  border-top: 3px double #333333;
+  color: #333333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+.star-hr::after {
+  background: white;
+  content: "✦";
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+
+.dark .star-hr {
+  border: none;
+  border-top: 3px double #ffffff;
+  color: #ffffff;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+.dark .star-hr::after {
+  background: #333333;
+  content: "✦";
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
