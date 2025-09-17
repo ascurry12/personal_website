@@ -200,28 +200,22 @@ const Creations = ({
         <div className="font-body-1 my-2 m-4">
           <h2 className="font-display tracking-widest text-4xl">Art Gallery</h2>
           <div className="flex flex-col bg-lightgray/30 dark:bg-black/25 p-4 rounded-md">
-            {chunkedImages.map((chunk, index) => {
+            {artwork.map((art) => {
               return (
-                <div key={index} className="grid gap-4 mt-4 aspect-square">
-                  {chunk.map((art) => {
-                    return (
-                      <button
-                        onClick={() => {
-                          handleLightboxOpen(art);
-                        }}
-                        key={art.title}
-                        className="rounded m-0 p-0 transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-105 hover:cursor-zoom-in"
-                      >
-                        <img
-                          className="h-auto w-full max-w-sm rounded-md"
-                          id={art.title}
-                          src={art.image}
-                          alt={art.title}
-                        ></img>
-                      </button>
-                    );
-                  })}
-                </div>
+                <button
+                  onClick={() => {
+                    handleLightboxOpen(art);
+                  }}
+                  key={art.title}
+                  className="rounded m-0 pb-3 transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-105 hover:cursor-zoom-in"
+                >
+                  <img
+                    className="h-auto w-full max-w-sm rounded-md"
+                    id={art.title}
+                    src={art.image}
+                    alt={art.title}
+                  ></img>
+                </button>
               );
             })}
           </div>
