@@ -213,7 +213,7 @@ const Creations = ({
                         className="rounded m-0 p-0 transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-105 hover:cursor-zoom-in"
                       >
                         <img
-                          className="h-auto max-w-full rounded-md"
+                          className="h-auto w-auto rounded-md"
                           id={art.title}
                           src={art.image}
                           alt={art.title}
