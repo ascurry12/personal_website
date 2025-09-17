@@ -253,7 +253,15 @@ const Creations = ({
                     className="bg-black/10 dark:bg-black/25 rounded-md m-2 shadow-[0px_3px_3px_rgba(0,0,0,0.5)] transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-102"
                   >
                     <div className="w-fit p-3 ">
-                      <img className="w-18" src={project.image}></img>
+                      <img
+                        className={`w-18 ${
+                          project.image.includes("svg") &&
+                          !project.image.includes("plumbob")
+                            ? "invert-13 hue-rotate-301 saturate-2479 brightness-92 contrast-80 dark:invert-100 dark:contrast-100 dark:brightness-113"
+                            : ""
+                        }`}
+                        src={project.image}
+                      ></img>
                       <div>
                         <h1 className="font-display tracking-widest text-[18px]">
                           {project.title}
