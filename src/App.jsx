@@ -16,7 +16,9 @@ function App() {
   const [isDark, setIsDark] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [time, setTime] = useState(new Date());
-
+  const [isPortrait, setIsPortrait] = useState(
+    window.matchMedia("(orientation: portrait)").matches
+  );
   const [openImage, setOpenImage] = useState(null);
   const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
 
@@ -235,6 +237,20 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(orientation: portrait)");
+
+    const handleOrientationChange = (event) => {
+      setIsPortrait(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleOrientationChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleOrientationChange);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-white bg-center bg-no-repeat bg-contain bg-fixed bg-[url('/assets/heartlight.png')] text-darkcobalt dark:text-white dark:bg-[url('/assets/heartdark.png')] dark:bg-pitchblack">
       <div className="flex-1 flex">
@@ -295,6 +311,7 @@ function App() {
             setIsOpen={setIsOpen}
             isMuted={isMuted}
             isMobile={isMobile}
+            isPortrait={isPortrait}
           />
           <Creations
             id="creations"
@@ -308,6 +325,7 @@ function App() {
             setLightboxIsOpen={setLightboxIsOpen}
             lightboxIsOpen={lightboxIsOpen}
             isMobile={isMobile}
+            isPortrait={isPortrait}
           />
           <Links
             id="links"
@@ -317,6 +335,7 @@ function App() {
             setIsOpen={setIsOpen}
             isMuted={isMuted}
             isMobile={isMobile}
+            isPortrait={isPortrait}
           />
           <Music
             id="playlists"
@@ -326,6 +345,7 @@ function App() {
             setIsOpen={setIsOpen}
             isMuted={isMuted}
             isMobile={isMobile}
+            isPortrait={isPortrait}
           />
           <Popup
             id="popup"

@@ -16,6 +16,7 @@ const Creations = ({
   openImage,
   setOpenImage,
   isMobile,
+  isPortrait,
 }) => {
   // complete, wip (in progress), pre (planning)
   const projects = [
@@ -126,9 +127,10 @@ const Creations = ({
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         title={"creations"}
-        height={"h-screen"}
+        height={"h-[50vh]"}
+        isPortrait={isPortrait}
       >
-        <div className="font-body-1 my-2 m-0 w-fit">
+        <div className="font-body-1 my-2 w-fit mx-auto">
           <h2 className="font-display tracking-widest text-4xl mb-2 ml-3">
             Projects
           </h2>
@@ -198,7 +200,9 @@ const Creations = ({
         </div>
 
         <div className="font-body-1 my-2 m-auto w-fit">
-          <h2 className="font-display tracking-widest text-4xl pl-3 ">Art Gallery</h2>
+          <h2 className="font-display tracking-widest text-4xl pl-3 ">
+            Art Gallery
+          </h2>
           <div className="flex flex-col w-fit bg-lightgray/30 dark:bg-black/25 p-3 rounded-md">
             {artwork.map((art) => {
               return (
@@ -210,7 +214,7 @@ const Creations = ({
                   className="rounded m-0 pb-3 transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-105 hover:cursor-zoom-in"
                 >
                   <img
-                    className="h-auto w-full max-w-md rounded-md"
+                    className={`h-auto w-full ${isPortrait ? "max-w-md" : "max-w-screen"} rounded-md`}
                     id={art.title}
                     src={art.image}
                     alt={art.title}

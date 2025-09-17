@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Drawer = ({ isOpen, setIsOpen, title, id, height, children }) => {
+const Drawer = ({ isOpen, setIsOpen, isPortrait, title, id, height, children }) => {
   const [visible, setVisible] = useState(false);
   const [animationClass, setAnimationClass] = useState("");
 

@@ -10,6 +10,7 @@ const Links = ({
   id,
   zIndex,
   isMobile,
+  isPortrait,
 }) => {
   const content = ["linkedin", "github", "artwork"];
 
@@ -31,10 +32,11 @@ const Links = ({
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       title={"links"}
-      height={"h-[200px]"}
+      height={"h-[50vh]"}
+      isPortrait={isPortrait}
     >
       {" "}
-      <div className="flex flex-row ml-4 mr-4 text-center font-display tracking-widest">
+      <div className="flex flex-row mx-auto text-center font-display tracking-widest">
         {content.map((content, index) => {
           return (
             <div key={index} className="m-5">

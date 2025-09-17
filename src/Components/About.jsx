@@ -10,6 +10,7 @@ const About = ({
   id,
   zIndex,
   isMobile,
+  isPortrait,
 }) => {
   var devSkills = ["ReactJS", "ASP.NET", "Azure", "Git", "Storybook"];
 
@@ -31,7 +32,8 @@ const About = ({
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       title={"about"}
-      height={"h-screen"}
+      height={"h-[50vh]"}
+      isPortrait={isPortrait}
     >
       <div className="bg-white dark:bg-cobalt shadow-[0px_1px_2px_rgba(0,0,0,0.5)] mb-1 pb-3">
         <div className="flex flex-wrap flex-col">

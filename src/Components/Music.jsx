@@ -10,6 +10,7 @@ const Music = ({
   id,
   zIndex,
   isMobile,
+  isPortrait,
 }) => {
   const playlists = [
     {
@@ -44,7 +45,8 @@ const Music = ({
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       title={"playlists"}
-      height={"h-screen"}
+      height={"h-[50vh]"}
+      isPortrait={isPortrait}
     >
 
       <div className="mx-auto">
