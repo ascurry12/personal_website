@@ -128,11 +128,11 @@ const Creations = ({
         title={"creations"}
         height={"h-screen"}
       >
-        <div className="font-body-1 my-2 m-4">
-          <h2 className="font-display tracking-widest text-4xl mb-2">
+        <div className="font-body-1 my-2 m-0 w-fit">
+          <h2 className="font-display tracking-widest text-4xl mb-2 ml-3">
             Projects
           </h2>
-          <div className="flex flex-col">
+          <div className="flex flex-col m-3">
             {projects.map((project, index) => {
               return (
                 <a
@@ -197,9 +197,9 @@ const Creations = ({
           </div>
         </div>
 
-        <div className="font-body-1 my-2 m-4">
-          <h2 className="font-display tracking-widest text-4xl w-screen">Art Gallery</h2>
-          <div className="flex flex-col w-fit bg-lightgray/30 dark:bg-black/25 p-4 rounded-md">
+        <div className="font-body-1 my-2 m-0 w-fit">
+          <h2 className="font-display tracking-widest text-4xl pl-3 w-screen">Art Gallery</h2>
+          <div className="flex flex-col w-fit bg-lightgray/30 dark:bg-black/25 p-3 rounded-md">
             {artwork.map((art) => {
               return (
                 <button
