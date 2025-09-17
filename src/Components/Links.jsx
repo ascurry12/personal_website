@@ -31,7 +31,7 @@ const Links = ({
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       title={"links"}
-      height={"h-screen"}
+      height={"h-[200px]"}
     >
       {" "}
       <div className="flex flex-row ml-4 mr-4 text-center font-display tracking-widest">
