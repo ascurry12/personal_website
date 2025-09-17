@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, cache } from "react";
 import { DndContext } from "@dnd-kit/core";
 import useSound from "use-sound";
 import "./App.css";
@@ -9,9 +9,7 @@ import Creations from "./Components/Creations";
 import Links from "./Components/Links";
 import Music from "./Components/Music";
 import Popup from "./Components/Popup";
-import Drawer from "./Components/Drawer";
 import clickSound from "/assets/audio/click.mp3";
-import Lightbox from "./Components/Lightbox";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -174,12 +172,20 @@ function App() {
     };
   };
 
+  const setThemeInStorage = (theme) => {
+    localStorage.setItem("theme", theme);
+  };
+
+  const getThemeInStorage = () => {
+    return localStorage.getItem("theme");
+  };
+
   const toggleDark = () => {
-    setIsDark((prev) => (prev === true ? false : true));
+    setIsDark((prev) => !prev);
   };
 
   const toggleAudio = () => {
-    setIsMuted((prev) => (prev === true ? false : true));
+    setIsMuted((prev) => !prev);
   };
 
   useEffect(() => {
@@ -202,11 +208,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isDark) {
+    const storedTheme = getThemeInStorage();
+    setIsDark(storedTheme === "true");
+  }, []);
+
+  useEffect(() => {
+    setThemeInStorage(isDark);
+
+    if (getThemeInStorage(isDark) === "true") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    console.log(getThemeInStorage(), isDark);
   }, [isDark]);
 
   useEffect(() => {
@@ -267,61 +282,61 @@ function App() {
           />
         </div>
         {/* Drawers and windows */}
-          <DndContext
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            modifiers={[restrictToScreenSize(positions)]}
-          >
-            <About
-              id="about"
-              position={positions["about"]}
-              zIndex={zIndices["about"]}
-              isOpen={isOpen["about"]}
-              setIsOpen={setIsOpen}
-              isMuted={isMuted}
-              isMobile={isMobile}
-            />
-            <Creations
-              id="creations"
-              position={positions["creations"]}
-              zIndex={zIndices["creations"]}
-              isOpen={isOpen["creations"]}
-              setIsOpen={setIsOpen}
-              isMuted={isMuted}
-              setOpenImage={setOpenImage}
-              openImage={openImage}
-              setLightboxIsOpen={setLightboxIsOpen}
-              lightboxIsOpen={lightboxIsOpen}
-              isMobile={isMobile}
-            />
-            <Links
-              id="links"
-              position={positions["links"]}
-              zIndex={zIndices["links"]}
-              isOpen={isOpen["links"]}
-              setIsOpen={setIsOpen}
-              isMuted={isMuted}
-              isMobile={isMobile}
-            />
-            <Music
-              id="playlists"
-              position={positions["playlists"]}
-              zIndex={zIndices["playlists"]}
-              isOpen={isOpen["playlists"]}
-              setIsOpen={setIsOpen}
-              isMuted={isMuted}
-              isMobile={isMobile}
-            />
-            <Popup
-              id="popup"
-              position={positions["popup"]}
-              zIndex={zIndices["popup"]}
-              isOpen={isOpen["popup"]}
-              setIsOpen={setIsOpen}
-              isMuted={isMuted}
-              isMobile={isMobile}
-            />
-          </DndContext>
+        <DndContext
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          modifiers={[restrictToScreenSize(positions)]}
+        >
+          <About
+            id="about"
+            position={positions["about"]}
+            zIndex={zIndices["about"]}
+            isOpen={isOpen["about"]}
+            setIsOpen={setIsOpen}
+            isMuted={isMuted}
+            isMobile={isMobile}
+          />
+          <Creations
+            id="creations"
+            position={positions["creations"]}
+            zIndex={zIndices["creations"]}
+            isOpen={isOpen["creations"]}
+            setIsOpen={setIsOpen}
+            isMuted={isMuted}
+            setOpenImage={setOpenImage}
+            openImage={openImage}
+            setLightboxIsOpen={setLightboxIsOpen}
+            lightboxIsOpen={lightboxIsOpen}
+            isMobile={isMobile}
+          />
+          <Links
+            id="links"
+            position={positions["links"]}
+            zIndex={zIndices["links"]}
+            isOpen={isOpen["links"]}
+            setIsOpen={setIsOpen}
+            isMuted={isMuted}
+            isMobile={isMobile}
+          />
+          <Music
+            id="playlists"
+            position={positions["playlists"]}
+            zIndex={zIndices["playlists"]}
+            isOpen={isOpen["playlists"]}
+            setIsOpen={setIsOpen}
+            isMuted={isMuted}
+            isMobile={isMobile}
+          />
+          <Popup
+            id="popup"
+            position={positions["popup"]}
+            zIndex={zIndices["popup"]}
+            isOpen={isOpen["popup"]}
+            setIsOpen={setIsOpen}
+            isMuted={isMuted}
+            isMobile={isMobile}
+          />
+        </DndContext>
       </div>
       {isMobile ? null : <Footer />}
     </div>

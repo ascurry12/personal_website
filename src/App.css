@@ -17,6 +17,36 @@
   .animate-pop-in {
     animation: pop-in 0.15s ease-out;
   }
+
+  @keyframes drawer-slide-in {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes drawer-slide-out {
+    from {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  .drawer-animate-in {
+    animation: drawer-slide-in 0.2s ease-out forwards;
+  }
+
+  .drawer-animate-out {
+    animation: drawer-slide-out 0.2s ease-in forwards;
+  }
 }
 
 @theme {
@@ -28,7 +58,7 @@
   --color-pitchblack: #222127;
   --color-steel: #3d3d3d;
   --color-transparentblack: #000000;
-  --color-lightgray: #C8C8C8;
+  --color-lightgray: #c8c8c8;
 
   --color-window-blue: #77a2da;
   --color-window-hotpink: #ea1b96;

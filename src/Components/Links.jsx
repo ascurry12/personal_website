@@ -1,7 +1,16 @@
 import React from "react";
 import Window from "./Window";
+import Drawer from "./Drawer";
 
-const Links = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, isMobile }) => {
+const Links = ({
+  isOpen,
+  setIsOpen,
+  isMuted,
+  position,
+  id,
+  zIndex,
+  isMobile,
+}) => {
   const content = ["linkedin", "github", "artwork"];
 
   const icons = {
@@ -16,7 +25,39 @@ const Links = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, isMobile }) =
     artwork: "javascript:;",
   };
 
-  return (isMobile ? <></> :
+  return isMobile ? (
+    <Drawer
+      id={id}
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      title={"links"}
+      height={"h-[100]"}
+    >
+      {" "}
+      <div className="flex flex-row ml-4 mr-4 text-center font-display tracking-widest">
+        {content.map((content, index) => {
+          return (
+            <div key={index} className="m-5">
+              <a
+                href={links[content]}
+                target={content != "artwork" ? "_blank" : null}
+              >
+                <img
+                  src={icons[content]}
+                  className="hover:bg-black/10 hover:rounded-lg w-20 mx-auto mb-0 invert-13 hue-rotate-301 saturate-2479 brightness-92 contrast-80 dark:invert-100 dark:contrast-100 dark:brightness-113"
+                  alt={`${content} icon`}
+                ></img>
+              </a>
+              <div>
+                <p className="mb-0">{content}</p>
+                {content == "artwork" ? <p className="">(coming soon)</p> : ""}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Drawer>
+  ) : (
     <Window
       title="links"
       position={position}
@@ -31,7 +72,10 @@ const Links = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, isMobile }) =
         {content.map((content, index) => {
           return (
             <div key={index} className="m-5">
-              <a href={links[content]} target={content != "artwork" ? "_blank" : null}>
+              <a
+                href={links[content]}
+                target={content != "artwork" ? "_blank" : null}
+              >
                 <img
                   src={icons[content]}
                   className="hover:bg-black/10 hover:rounded-lg w-20 mx-auto mb-0 invert-13 hue-rotate-301 saturate-2479 brightness-92 contrast-80 dark:invert-100 dark:contrast-100 dark:brightness-113"

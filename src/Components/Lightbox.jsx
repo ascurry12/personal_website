@@ -1,6 +1,6 @@
 import React from "react";
 
-const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted }) => {
+const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted, isMobile }) => {
   const handleLightboxClose = () => {
     setIsOpen(false);
   };
@@ -10,11 +10,20 @@ const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted }) => {
       onClick={(e) => {
         handleLightboxClose();
       }}
-      className="bg-black/25 flex flex-col z-1000 justify-center p-5 mx-auto fixed inset-0 hover:cursor-zoom-out"
+      className={` ${
+        isMobile ? "bg-black/50" : "bg-black/25"
+      } flex flex-col z-[3000] justify-center p-5 mx-auto fixed inset-0 hover:cursor-zoom-out`}
     >
       <div className="flex flex-col">
-        <img className="w-full max-h-120 object-contain mb-4 rounded" src={image.image}></img>
-        <div className="font-body-1 text-black dark:text-white">
+        <img
+          className="w-full max-h-120 object-contain mb-4 rounded"
+          src={image.image}
+        ></img>
+        <div
+          className={`font-body-1 ${
+            isMobile ? " text-white" : "text-black"
+          } dark:text-white`}
+        >
           <h1 className=" font-display text-[25px] tracking-widest">
             {image.title}
           </h1>

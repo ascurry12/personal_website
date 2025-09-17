@@ -2,8 +2,21 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Window from "./Window";
 import Lightbox from "./Lightbox";
+import Drawer from "./Drawer";
 
-const Creations = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, lightboxIsOpen, setLightboxIsOpen, openImage, setOpenImage, isMobile }) => {
+const Creations = ({
+  isOpen,
+  setIsOpen,
+  isMuted,
+  position,
+  id,
+  zIndex,
+  lightboxIsOpen,
+  setLightboxIsOpen,
+  openImage,
+  setOpenImage,
+  isMobile,
+}) => {
   // complete, wip (in progress), pre (planning)
   const projects = [
     {
@@ -104,10 +117,118 @@ const Creations = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, lightboxI
   const handleLightboxOpen = (art) => {
     setOpenImage(art);
     setLightboxIsOpen(true);
-
   };
 
-  return (isMobile ? <>{lightboxIsOpen ? <Lightbox image={openImage} isMuted={isMuted} setIsOpen={setLightboxIsOpen}/> : null}</> :
+  return isMobile ? (
+    <>
+      <Drawer
+        id={id}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        title={"creations"}
+        height={"h-screen"}
+      >
+        <div className="font-body-1 my-2 m-4">
+          <h2 className="font-display tracking-widest text-4xl mb-2">
+            Projects
+          </h2>
+          <div className="flex flex-col">
+            {projects.map((project, index) => {
+              return (
+                <a
+                  key={index}
+                  href={project.link}
+                  target="_blank"
+                  className="bg-black/10 dark:bg-black/25 rounded-md mb-4 shadow-[0px_3px_3px_rgba(0,0,0,0.5)] transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-102"
+                >
+                  <div className="w-fit p-3 ">
+                    <img className={`w-18 ${project.image.includes('svg') && !project.image.includes('plumbob') ? "invert-13 hue-rotate-301 saturate-2479 brightness-92 contrast-80 dark:invert-100 dark:contrast-100 dark:brightness-113" : ""}`} src={project.image}></img>
+                    <div className="">
+                      <h1 className="font-display tracking-widest text-[18px]">
+                        {project.title}
+                      </h1>
+                      <p className="font-body-1 text-[15px]">
+                        {project.description}
+                      </p>
+                      <div className="flex my-2">
+                        {project.tools.map((tool, index) => {
+                          return (
+                            <p
+                              className="bg-lightgray/80 dark:bg-white/10 rounded text-[14px] px-1 mr-1"
+                              key={index}
+                            >
+                              {tool}
+                            </p>
+                          );
+                        })}
+                      </div>
+                      <p
+                        className={`text-[14px] w-fit rounded-xl px-2 ${
+                          project.completion == "complete"
+                            ? "bg-green-600/50 dark:bg-green-400/30"
+                            : project.completion == "wip"
+                            ? "bg-yellow-400/50 dark:bg-yellow-400/30"
+                            : project.completion == "pre"
+                            ? "bg-blue-400/50 dark:bg-blue-400/30"
+                            : null
+                        }`}
+                      >
+                        {project.completion == "complete"
+                          ? "Complete"
+                          : project.completion == "wip"
+                          ? "In Progress"
+                          : project.completion == "pre"
+                          ? "Planning"
+                          : null}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="font-body-1 my-2 m-4">
+          <h2 className="font-display tracking-widest text-4xl">Art Gallery</h2>
+          <div className="flex flex-col bg-lightgray/30 dark:bg-black/25 p-4 rounded-md">
+            {chunkedImages.map((chunk, index) => {
+              return (
+                <div key={index} className="grid gap-4 mt-4 aspect-square">
+                  {chunk.map((art) => {
+                    return (
+                      <button
+                        onClick={() => {
+                          handleLightboxOpen(art);
+                        }}
+                        key={art.title}
+                        className="rounded m-0 p-0 transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-105 hover:cursor-zoom-in"
+                      >
+                        <img
+                          className="h-auto max-w-full rounded-md"
+                          id={art.title}
+                          src={art.image}
+                          alt={art.title}
+                        ></img>
+                      </button>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </Drawer>
+      {lightboxIsOpen ? (
+        <Lightbox
+          image={openImage}
+          isMuted={isMuted}
+          setIsOpen={setLightboxIsOpen}
+          isMobile={isMobile}
+        />
+      ) : null}
+    </>
+  ) : (
     <>
       <Window
         title="creations"
@@ -210,7 +331,14 @@ const Creations = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, lightboxI
           </div>
         </div>
       </Window>
-      {lightboxIsOpen ? <Lightbox image={openImage} isMuted={isMuted} setIsOpen={setLightboxIsOpen}/> : null}
+      {lightboxIsOpen ? (
+        <Lightbox
+          image={openImage}
+          isMuted={isMuted}
+          setIsOpen={setLightboxIsOpen}
+          isMobile={isMobile}
+        />
+      ) : null}
     </>
   );
 };

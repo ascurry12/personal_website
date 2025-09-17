@@ -1,7 +1,16 @@
 import React from "react";
 import Window from "./Window";
+import Drawer from "./Drawer";
 
-const Music = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, isMobile }) => {
+const Music = ({
+  isOpen,
+  setIsOpen,
+  isMuted,
+  position,
+  id,
+  zIndex,
+  isMobile,
+}) => {
   const playlists = [
     {
       name: "my favorites ❤︎",
@@ -29,7 +38,56 @@ const Music = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, isMobile }) =
       image: "/assets/playlistimages/pinkpantheress.jpg",
     },
   ];
-  return (isMobile ? <></> :
+  return isMobile ? (
+    <Drawer
+      id={id}
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      title={"playlists"}
+      height={"h-screen"}
+    >
+
+      <div className="mx-auto">
+        <div>
+          <h1 className="text-center pb-3 font-display tracking-widest text-[18px]">
+            (some of) my music ♪
+          </h1>
+          <hr className="star-hr w-1/3 mx-auto"></hr>
+        </div>
+        {playlists.map((playlist, index) => {
+          return (
+            <a
+              key={index}
+              href={playlist.link}
+              target={"_blank"}
+              className="m-1"
+            >
+              <div
+                className={`flex w-80 ${
+                  index % 2 != 0
+                    ? "bg-lightgray dark:bg-steel"
+                    : "bg-window-blue"
+                } p-2 rounded transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-102 shadow-[0px_2px_2px_rgba(0,0,0,0.5)]`}
+              >
+                <img
+                  className="w-20 h-20 rounded-md"
+                  src={playlist.image}
+                ></img>
+                <div className="ml-4">
+                  <h3 className="font-display tracking-widest">
+                    {playlist.name}
+                  </h3>
+                  <p className="font-body-1 text-[12px]">
+                    {playlist.description}
+                  </p>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </Drawer>
+  ) : (
     <Window
       title="playlists"
       position={position}
@@ -65,7 +123,10 @@ const Music = ({ isOpen, setIsOpen, isMuted, position, id, zIndex, isMobile }) =
                     : "bg-window-blue"
                 } p-2 rounded transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-102 shadow-[0px_2px_2px_rgba(0,0,0,0.5)]`}
               >
-                <img className="w-20 h-20 rounded-md" src={playlist.image}></img>
+                <img
+                  className="w-20 h-20 rounded-md"
+                  src={playlist.image}
+                ></img>
                 <div className="ml-4">
                   <h3 className="font-display tracking-widest">
                     {playlist.name}
