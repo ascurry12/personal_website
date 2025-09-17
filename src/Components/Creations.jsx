@@ -130,7 +130,7 @@ const Creations = ({
         height={"h-[50vh]"}
         isPortrait={isPortrait}
       >
-        <div className="font-body-1 my-2 w-fit mx-auto">
+        <div className={`font-body-1 my-2 ${isPortrait ? "w-fit" : "w-screen"} mx-auto`}>
           <h2 className="font-display tracking-widest text-4xl mb-2 ml-3">
             Projects
           </h2>
