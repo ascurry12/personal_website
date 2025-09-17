@@ -35,7 +35,7 @@ const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted, isMobile, isPortra
     >
       <div className="flex flex-col">
         <img
-          className={`${!isPortrait ? "w-[50vh] mx-auto" : "w-full"} max-h-120 object-contain mb-4 rounded`}
+          className={`${!isPortrait && isMobile ? "w-[50vh] mx-auto" : "w-full"} max-h-120 object-contain mb-4 rounded`}
           src={image.image}
         ></img>
         <div
