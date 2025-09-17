@@ -1,9 +1,26 @@
 import React from "react";
+import { useEffect, useState } from "react";
 
 const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted, isMobile }) => {
+  const [visible, setVisible] = useState(false);
+  const [fadeClass, setFadeClass] = useState("opacity-0");
+
   const handleLightboxClose = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    let timeout;
+
+    if (isOpen && !visible) {
+      setVisible(true);
+      setTimeout(() => setFadeClass("opacity-100"), 10);
+    } else if (visible) {
+      setFadeClass("opacity-0");
+      timeout = setTimeout(() => setVisible(false), 300);
+    }
+    return () => clearTimeout(timeout);
+  }, [isOpen]);
 
   return image ? (
     <div
@@ -12,7 +29,9 @@ const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted, isMobile }) => {
       }}
       className={` ${
         isMobile ? "bg-black/50" : "bg-black/25"
-      } flex flex-col z-[3000] justify-center p-5 mx-auto fixed inset-0 hover:cursor-zoom-out`}
+      } transition-opacity duration-300 ease-in-out ${fadeClass} flex flex-col ${
+        visible ? "z-[3000]" : "z-[-1]"
+      } justify-center p-5 mx-auto fixed inset-0 hover:cursor-zoom-out`}
     >
       <div className="flex flex-col">
         <img

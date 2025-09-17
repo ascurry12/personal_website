@@ -16,10 +16,6 @@ const Drawer = ({ isOpen, setIsOpen, title, id, height, children }) => {
   };
 
   useEffect(() => {
-  console.log("isOpen:", isOpen, "| animationClass:", animationClass, "| visible:", visible);
-}, [isOpen]);
-
-  useEffect(() => {
     if (isOpen && !visible) {
       setVisible(true);
       setAnimationClass("drawer-animate-in");

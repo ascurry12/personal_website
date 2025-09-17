@@ -16,7 +16,7 @@ const Window = ({
   height,
   header = false,
   headerContents = null,
-  message = null
+  message = null,
 }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: id,
@@ -44,7 +44,6 @@ const Window = ({
   });
 
   const handleCloseWindow = (id) => {
-    console.log("Closing window with id:", id);
     setIsOpen((prev) => ({
       ...prev,
       [id]: false,
@@ -87,7 +86,9 @@ const Window = ({
         </div>
         {header ? (
           <div className="flex flex-col h-full relative">
-            <div className="bg-white dark:bg-cobalt shadow-[0px_1px_2px_rgba(0,0,0,0.5)] pb-3 z-10">{headerContents}</div>
+            <div className="bg-white dark:bg-cobalt shadow-[0px_1px_2px_rgba(0,0,0,0.5)] pb-3 z-10">
+              {headerContents}
+            </div>
             <div
               className={`flex flex-col overflow-y-auto scroll-auto ${
                 height || "h-100"
@@ -106,7 +107,8 @@ const Window = ({
           </div>
         )}
         <div className="bg-lightgray dark:bg-steel border-t-3 border-cobalt dark:border-white flex font-display tracking-widest mx-auto pl-2 pr-2">
-          {"ᯓ★"}{message}
+          {"ᯓ★"}
+          {message}
         </div>
       </div>
     </div>
