@@ -197,8 +197,8 @@ const Creations = ({
           </div>
         </div>
 
-        <div className="font-body-1 my-2 m-0 w-fit">
-          <h2 className="font-display tracking-widest text-4xl pl-3 w-screen">Art Gallery</h2>
+        <div className="font-body-1 my-2 m-auto w-fit">
+          <h2 className="font-display tracking-widest text-4xl pl-3 ">Art Gallery</h2>
           <div className="flex flex-col w-fit bg-lightgray/30 dark:bg-black/25 p-3 rounded-md">
             {artwork.map((art) => {
               return (
