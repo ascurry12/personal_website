@@ -1,4 +1,6 @@
-# React + Vite
+# Welcome to Aniyah's Desktop!
+
+View the full website [here](https://asc-os.netlify.app/)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
