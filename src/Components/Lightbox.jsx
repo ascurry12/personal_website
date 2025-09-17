@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted, isMobile }) => {
+const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted, isMobile, isPortrait }) => {
   const [visible, setVisible] = useState(false);
   const [fadeClass, setFadeClass] = useState("opacity-0");
 
@@ -35,7 +35,7 @@ const Lightbox = ({ image = null, isOpen, setIsOpen, isMuted, isMobile }) => {
     >
       <div className="flex flex-col">
         <img
-          className="w-full max-h-120 object-contain mb-4 rounded"
+          className={`${!isPortrait ? "w-[100vh] mx-auto" : "w-full"} max-h-120 object-contain mb-4 rounded`}
           src={image.image}
         ></img>
         <div

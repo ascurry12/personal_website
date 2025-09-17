@@ -231,6 +231,7 @@ const Creations = ({
         setIsOpen={setLightboxIsOpen}
         isMobile={isMobile}
         isOpen={lightboxIsOpen}
+        isPortrait={isPortrait}
       />
     </>
   ) : (
@@ -350,6 +351,7 @@ const Creations = ({
         setIsOpen={setLightboxIsOpen}
         isMobile={isMobile}
         isOpen={lightboxIsOpen}
+        isPortrait={isPortrait}
       />
     </>
   );

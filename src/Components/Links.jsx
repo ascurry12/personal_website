@@ -32,7 +32,7 @@ const Links = ({
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       title={"links"}
-      height={"h-[50vh]"}
+      height={isPortrait ? "h-[25vh]" : "h-[50vh]"}
       isPortrait={isPortrait}
     >
       {" "}

@@ -40,7 +40,7 @@ function App() {
       y: Math.floor(window.innerHeight / 8),
     },
     links: {
-      x: Math.floor(window.innerWidth / 2) - 50,
+      x: Math.floor(window.innerWidth / 2) - 100,
       y: Math.floor(window.innerHeight / 2),
     },
     playlists: {
