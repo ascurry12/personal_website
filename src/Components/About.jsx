@@ -42,14 +42,14 @@ const About = ({
             src="/assets/me.JPG"
           ></img>
           <div className="w-fit mt-5 mx-auto">
-            <h1 className="text-5xl font-display tracking-widest mx-auto mr-2">
+            <h1 className="text-5xl font-display tracking-widest mx-auto ml-4">
               Aniyah Curry
             </h1>
             <hr className="star-hr w-1/2 mx-auto m-5"></hr>
             <div className="text-center font-body-1 text-[18px]">
               <h2>hobbyist artist</h2>
               <h2>+</h2>
-              <h2>aspiring web & game developer</h2>
+              <h2>aspiring front-end & game developer</h2>
             </div>
           </div>
         </div>
@@ -171,14 +171,14 @@ const About = ({
             src="/assets/me.JPG"
           ></img>
           <div className="w-fit mt-5 ml-10">
-            <h1 className="text-5xl font-display tracking-widest mx-auto mr-2">
+            <h1 className="text-5xl font-display tracking-widest mx-auto ml-2">
               Aniyah Curry
             </h1>
             <hr className="star-hr w-1/2 mx-auto m-5"></hr>
             <div className="text-center font-body-1 text-[18px]">
               <h2>hobbyist artist</h2>
               <h2>+</h2>
-              <h2>aspiring web & game developer</h2>
+              <h2>aspiring front-end & game developer</h2>
             </div>
           </div>
         </div>
