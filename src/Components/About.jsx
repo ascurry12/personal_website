@@ -139,7 +139,7 @@ const About = ({
           <ul className=" list-disc pl-5">
             <li>
               <strong>Gaming:</strong> The Sims (especially 2 & 3!), Overwatch,
-              Marvel Rivals, Stardew Valley
+              Marvel Rivals, Stardew Valley, Baldur's Gate 3
             </li>
             <li>
               <strong>Movies & TV:</strong> Marvel Cinematic Universe, Horror,
@@ -268,7 +268,7 @@ const About = ({
           <ul className=" list-disc pl-5">
             <li>
               <strong>Gaming:</strong> The Sims (especially 2 & 3!), Overwatch,
-              Marvel Rivals, Stardew Valley
+              Marvel Rivals, Stardew Valley, Baldur's Gate 3
             </li>
             <li>
               <strong>Movies & TV:</strong> Marvel Cinematic Universe, Horror,
