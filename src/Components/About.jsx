@@ -138,7 +138,7 @@ const About = ({
         <div className="text-[16px]">
           <ul className=" list-disc pl-5">
             <li>
-              <strong>Gaming:</strong> The Sims (especially 2 & 3!), Overwatch,
+              <strong>Gaming:</strong> The Sims (2 & 3), Overwatch,
               Marvel Rivals, Stardew Valley, Baldur's Gate 3
             </li>
             <li>
@@ -267,7 +267,7 @@ const About = ({
         <div className="text-[16px]">
           <ul className=" list-disc pl-5">
             <li>
-              <strong>Gaming:</strong> The Sims (especially 2 & 3!), Overwatch,
+              <strong>Gaming:</strong> The Sims (2 & 3), Overwatch,
               Marvel Rivals, Stardew Valley, Baldur's Gate 3
             </li>
             <li>
