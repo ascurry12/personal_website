@@ -24,7 +24,7 @@ const Creations = ({
       title: "La Cuillère",
       description:
         "A desktop application for creating and managing personal recipe collections",
-      tools: ["TypeScript", "Next.js", "Supabase", "DaisyUI", "ReactJS"],
+      tools: ["TypeScript", "Next.js", "Supabase", "DaisyUI"],
       image: "/assets/svgicons/book-solid-full.svg",
       link: "https://github.com/ascurry12/recipe-bookshelf",
       completion: "wip",
