@@ -21,6 +21,15 @@ const Creations = ({
   // complete, wip (in progress), pre (planning)
   const projects = [
     {
+      title: "La Cuillère",
+      description:
+        "A desktop application for creating and managing personal recipe collections",
+      tools: ["Typescript", "Next.js", "Supabase", "DaisyUI", "ReactJS"],
+      image: "/assets/svgicons/book-solid-full.svg",
+      link: "https://github.com/ascurry12/recipe-bookshelf",
+      completion: "wip",
+    },
+    {
       title: "SiftySifty",
       description:
         "A desktop application to assist with testing & troubleshooting mods in The Sims",
@@ -130,7 +139,11 @@ const Creations = ({
         height={"h-[50vh]"}
         isPortrait={isPortrait}
       >
-        <div className={`font-body-1 my-2 ${isPortrait ? "w-fit" : "w-screen"} mx-auto`}>
+        <div
+          className={`font-body-1 my-2 ${
+            isPortrait ? "w-fit" : "w-screen"
+          } mx-auto`}
+        >
           <h2 className="font-display tracking-widest text-4xl mb-2 ml-3">
             Projects
           </h2>
@@ -214,7 +227,9 @@ const Creations = ({
                   className="rounded m-0 pb-3 transition delay-20 duration-250 ease-in-out hover:-translate-y-0 hover:scale-105 hover:cursor-zoom-in"
                 >
                   <img
-                    className={`h-auto w-full ${isPortrait ? "max-w-md" : "max-w-screen"} rounded-md`}
+                    className={`h-auto w-full ${
+                      isPortrait ? "max-w-md" : "max-w-screen"
+                    } rounded-md`}
                     id={art.title}
                     src={art.image}
                     alt={art.title}
