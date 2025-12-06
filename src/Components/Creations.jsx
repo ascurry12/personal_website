@@ -19,7 +19,15 @@ const Creations = ({
   isPortrait,
 }) => {
   // complete, wip (in progress), pre (planning)
-  const projects = [
+  const projects = [    
+    {
+      title: "Map of Oz",
+      description: "An interactive map of Oz for Wicked fans",
+      tools: ["JavaScript", "ReactJS"],
+      image: "/assets/svgicons/broom-solid-full.svg",
+      link: "https://github.com/ascurry12/scrimba-quizzical",
+      completion: "complete",
+    },
     {
       title: "La Cuillère",
       description:
@@ -28,6 +36,14 @@ const Creations = ({
       image: "/assets/svgicons/book-solid-full.svg",
       link: "https://github.com/ascurry12/recipe-bookshelf",
       completion: "wip",
+    },
+    {
+      title: "Quizzical",
+      description: "A random trvia game you can test your knowledge with",
+      tools: ["JavaScript", "ReactJS"],
+      image: "/assets/svgicons/question-solid-full.svg",
+      link: "https://github.com/ascurry12/scrimba-quizzical",
+      completion: "complete",
     },
     {
       title: "SiftySifty",
