@@ -25,7 +25,7 @@ const Creations = ({
       description: "An interactive map of Oz for Wicked fans",
       tools: ["JavaScript", "ReactJS"],
       image: "/assets/svgicons/broom-solid-full.svg",
-      link: "https://github.com/ascurry12/scrimba-quizzical",
+      link: "https://github.com/ascurry12/wicked-map",
       completion: "complete",
     },
     {
