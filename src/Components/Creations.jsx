@@ -23,7 +23,7 @@ const Creations = ({
     {
       title: "Map of Oz",
       description: "An interactive map of Oz for Wicked fans",
-      tools: ["JavaScript", "ReactJS"],
+      tools: ["JavaScript", "ReactJS", "CSS", "HTML"],
       image: "/assets/svgicons/broom-solid-full.svg",
       link: "https://github.com/ascurry12/wicked-map",
       completion: "complete",
@@ -40,7 +40,7 @@ const Creations = ({
     {
       title: "Quizzical",
       description: "A random trvia game you can test your knowledge with",
-      tools: ["JavaScript", "ReactJS"],
+      tools: ["JavaScript", "ReactJS", "CSS", "HTML"],
       image: "/assets/svgicons/question-solid-full.svg",
       link: "https://github.com/ascurry12/scrimba-quizzical",
       completion: "complete",
@@ -57,7 +57,7 @@ const Creations = ({
     {
       title: "Movie Dash",
       description: "A dashboard that displays information about movies",
-      tools: ["JavaScript", "ReactJS"],
+      tools: ["JavaScript", "ReactJS", "CSS", "HTML"],
       image: "/assets/svgicons/film-solid-full.svg",
       link: "https://github.com/ascurry12/moviedash",
       completion: "complete",
