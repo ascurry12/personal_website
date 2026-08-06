@@ -12,18 +12,17 @@ const About = ({
   isMobile,
   isPortrait,
 }) => {
-  var devSkills = ["ReactJS", "ASP.NET", "Azure", "Git", "Storybook"];
+  var devSkills = ["ReactJS", "Spring Boot", "Angular", "Node.js", "Azure", "Git", "Storybook"];
 
   var artSkills = ["Procreate", "Adobe Illustrator", "Blender"];
 
   var codingLanguages = [
     "JavaScript",
+    "TypeScript",
     "Python",
+    "Java",
     "HTML",
     "CSS",
-    "C++",
-    "C#",
-    "C",
   ];
 
   return isMobile ? (

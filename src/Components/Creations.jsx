@@ -62,6 +62,14 @@ const Creations = ({
       link: "https://github.com/ascurry12/moviedash",
       completion: "complete",
     },
+        {
+      title: "MyBroadway",
+      description: "A broadway playbill tracker similar to Goodreads",
+      tools: ["JavaScript", "Angular", "CSS", "HTML"],
+      image: "/assets/svgicons/ticket-solid-full.svg",
+      link: "https://github.com/ascurry12/my-broadway",
+      completion: "wip",
+    },
   ];
 
   const artwork = [
